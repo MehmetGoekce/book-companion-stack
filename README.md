@@ -9,7 +9,8 @@ you are reading and the repository is in exactly the state the text describes.
 
 | Tag | Book version | Contents |
 |-----|--------------|----------|
-| `v0.1-ch1` | v0.1 (Chapter 1) | `scripts/hello_agent.py` — your first LLM call, plus its test |
+| `v0.1.1-ch1` | v0.1 (Chapter 1) | `scripts/hello_agent.py` on `claude-sonnet-5-5`; picks the text block, handles refusal and `max_tokens` |
+| `v0.1-ch1` | v0.1 (Chapter 1, superseded) | first version on `claude-sonnet-5`; kept so old links still resolve |
 
 Later tags add the data pipeline, the Docker setup, and the shopping
 assistant as their chapters are published.
@@ -21,7 +22,7 @@ Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 ```bash
 git clone https://github.com/MehmetGoekce/book-companion-stack.git
 cd book-companion-stack
-git checkout v0.1-ch1
+git checkout v0.1.1-ch1
 uv sync
 export ANTHROPIC_API_KEY=sk-ant-...
 uv run python scripts/hello_agent.py

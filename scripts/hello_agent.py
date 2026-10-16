@@ -18,8 +18,8 @@ import anthropic
 client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from the environment
 
 response = client.messages.create(
-    model="claude-sonnet-5",
-    max_tokens=1024,
+    model="claude-sonnet-5-5",
+    max_tokens=4096,
     system=(
         "You are a helpful shopping assistant for an outdoor sports store. "
         "You recommend products based on the customer's needs. "
@@ -30,4 +30,12 @@ response = client.messages.create(
     ],
 )
 
-print(response.content[0].text)
+# The model may decline, or run out of room: check why it stopped before reading.
+if response.stop_reason == "refusal":
+    raise SystemExit("The model declined this request.")
+
+# The reply is a list of blocks; thinking blocks can come first, so pick the text.
+print("".join(block.text for block in response.content if block.type == "text"))
+
+if response.stop_reason == "max_tokens":
+    print("\n[Answer cut off at max_tokens. Raise the limit and run again.]")

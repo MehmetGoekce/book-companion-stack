@@ -1,6 +1,6 @@
 [project]
 name = "book-companion-stack"
-version = "0.1.0"
+version = "0.1.1"
 description = "Companion code for the book 'Agentic AI in E-Commerce' (Mehmet Gökçe, Leanpub)"
 readme = "README.md"
 requires-python = ">=3.11"
